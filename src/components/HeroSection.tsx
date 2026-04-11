@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import profileImg from "@/assets/profile-placeholder.png";
+import profileImg from "@/assets/profile-photo.jpeg";
 
 const HeroSection = () => (
   <section className="min-h-screen gradient-hero flex items-center pt-16 px-4">
