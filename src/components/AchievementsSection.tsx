@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { Trophy, BookOpen, Users, Heart, Award, Star } from "lucide-react";
@@ -33,29 +32,29 @@ const AchievementsSection = () => (
 
     {/* Leadership, Research, Certifications, Volunteering */}
     <div className="grid sm:grid-cols-2 gap-5">
-      <InfoCard icon={Users} title="Leadership">
-        <li>Class Representative (2021 – 2024)</li>
-        <li>Event Coordinator – FUTEX 2025 (800+ registrations, AI Quest, Treasure Trove)</li>
-      </InfoCard>
-      <InfoCard icon={BookOpen} title="Research & Workshop">
-        <li>Published: AI and its Impact on Business and Management (2025)</li>
-        <li>IBM AI Workshop (College)</li>
-      </InfoCard>
-      <InfoCard icon={Award} title="Certifications">
-        <li>Web Design</li>
-        <li>Mastering Data Analysis with Python Libraries</li>
-        <li>Foundations of Programming with Python</li>
-        <li>DevOps Decode</li>
-      </InfoCard>
-      <InfoCard icon={Heart} title="Volunteering">
-        <li>Environmental initiative (tree plantation)</li>
-        <li>Social service activities at temple</li>
-      </InfoCard>
+      <InfoCard icon={Users} title="Leadership" items={[
+        "Class Representative (2021 – 2024)",
+        "Event Coordinator – FUTEX 2025 (800+ registrations, AI Quest, Treasure Trove)",
+      ]} />
+      <InfoCard icon={BookOpen} title="Research & Workshop" items={[
+        "Published: AI and its Impact on Business and Management (2025)",
+        "IBM AI Workshop (College)",
+      ]} />
+      <InfoCard icon={Award} title="Certifications" items={[
+        "Web Design",
+        "Mastering Data Analysis with Python Libraries",
+        "Foundations of Programming with Python",
+        "DevOps Decode",
+      ]} />
+      <InfoCard icon={Heart} title="Volunteering" items={[
+        "Environmental initiative (tree plantation)",
+        "Social service activities at temple",
+      ]} />
     </div>
   </SectionWrapper>
 );
 
-function InfoCard({ icon: Icon, title, children }: { icon: typeof Users; title: string; children: React.ReactNode }) {
+function InfoCard({ icon: Icon, title, items }: { icon: typeof Users; title: string; items: string[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -70,11 +69,11 @@ function InfoCard({ icon: Icon, title, children }: { icon: typeof Users; title: 
         <h3 className="font-heading font-bold text-white">{title}</h3>
       </div>
       <ul className="space-y-2 ml-1 text-sm text-white/60 list-none">
-        {React.Children.map(children, (child) => (
-          <div className="flex items-start gap-2">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-2">
             <span className="w-1 h-1 rounded-full bg-gold mt-2 flex-shrink-0" />
-            {child}
-          </div>
+            <span>{item}</span>
+          </li>
         ))}
       </ul>
     </motion.div>
