@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import { Trophy, BookOpen, Users, Heart, Award, Star } from "lucide-react";
