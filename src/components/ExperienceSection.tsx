@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -15,7 +15,8 @@ const projects = [
     ],
   },
   {
-    title: "Learning Management System (Ongoing)",
+    title: "Learning Management System",
+    ongoing: true,
     bullets: [
       "Developing course and student management modules",
       "Implementing student enrollment and progress tracking",
@@ -27,30 +28,40 @@ const projects = [
 ];
 
 const ExperienceSection = () => (
-  <SectionWrapper id="experience" title="Experience" alt>
+  <SectionWrapper id="experience" title="Experience" subtitle="Professional work and contributions" variant="navy">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-card rounded-xl p-6 md:p-8 shadow-card"
+      className="glass-card rounded-2xl p-8 md:p-10"
     >
-      <div className="flex items-center gap-3 mb-2">
-        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-primary">
-          <Briefcase size={20} />
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-12 h-12 rounded-xl gradient-btn flex items-center justify-center text-navy-deep">
+          <Briefcase size={22} />
         </div>
         <div>
-          <h3 className="font-heading font-bold text-foreground text-lg">Full Stack Python Developer Intern</h3>
-          <p className="text-sm text-muted-foreground">VDart · January 2026 – Present</p>
+          <h3 className="font-heading font-bold text-white text-xl">Full Stack Python Developer Intern</h3>
+          <p className="text-sm text-gold font-medium">VDart · January 2026 – Present</p>
         </div>
       </div>
 
-      <div className="mt-6 space-y-6">
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((p) => (
-          <div key={p.title}>
-            <h4 className="font-heading font-semibold text-foreground mb-2">{p.title}</h4>
-            <ul className="space-y-1.5 ml-4">
+          <div key={p.title} className="bg-white/5 rounded-xl p-6 border border-white/5">
+            <h4 className="font-heading font-semibold text-white mb-4 flex items-center gap-2">
+              {p.title}
+              {p.ongoing && (
+                <span className="text-[10px] font-bold bg-gold/20 text-gold px-2.5 py-0.5 rounded-full">
+                  Ongoing
+                </span>
+              )}
+            </h4>
+            <ul className="space-y-2.5">
               {p.bullets.map((b) => (
-                <li key={b} className="text-sm text-muted-foreground list-disc">{b}</li>
+                <li key={b} className="flex items-start gap-2 text-sm text-white/60">
+                  <ChevronRight size={14} className="text-gold flex-shrink-0 mt-0.5" />
+                  <span>{b}</span>
+                </li>
               ))}
             </ul>
           </div>

@@ -9,30 +9,46 @@ const education = [
 ];
 
 const EducationSection = () => (
-  <SectionWrapper id="education" title="Education" alt>
-    <div className="space-y-6">
-      {education.map((e, i) => (
-        <motion.div
-          key={e.degree}
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-          className="bg-card rounded-xl p-6 shadow-card flex items-start gap-4 hover:shadow-card-hover transition-shadow"
-        >
-          <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-primary flex-shrink-0 mt-1">
-            <GraduationCap size={20} />
-          </div>
-          <div className="flex-1">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <h3 className="font-heading font-bold text-foreground text-lg">{e.degree}</h3>
-              <span className="text-xs font-medium text-primary bg-secondary px-3 py-1 rounded-full w-fit">{e.score}</span>
+  <SectionWrapper id="education" title="Education" subtitle="Academic journey and milestones" variant="dark">
+    <div className="relative">
+      {/* Timeline line */}
+      <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/10 hidden sm:block" />
+
+      <div className="space-y-8">
+        {education.map((e, i) => (
+          <motion.div
+            key={e.degree}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15 }}
+            className={`relative flex items-start gap-6 ${
+              i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+            }`}
+          >
+            {/* Timeline dot */}
+            <div className="hidden sm:flex absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-gold ring-4 ring-navy-deep z-10 mt-6" />
+
+            <div className={`flex-1 ${i % 2 === 0 ? "md:text-right md:pr-12" : "md:pl-12"} sm:pl-16 md:pl-0`}>
+              <div className="glass-card rounded-2xl p-6 hover:bg-white/[0.08] transition-all">
+                <div className="flex items-center gap-3 mb-2 md:justify-start">
+                  <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
+                    <GraduationCap size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-bold text-white text-lg">{e.degree}</h3>
+                    <span className="text-xs font-semibold text-gold">{e.score}</span>
+                  </div>
+                </div>
+                <p className="text-white/70 text-sm mt-2">{e.school}</p>
+                <p className="text-white/40 text-xs mt-1">{e.location} · {e.year}</p>
+              </div>
             </div>
-            <p className="text-muted-foreground text-sm mt-1">{e.school}</p>
-            <p className="text-muted-foreground text-xs mt-0.5">{e.location} · {e.year}</p>
-          </div>
-        </motion.div>
-      ))}
+
+            <div className="hidden md:block flex-1" />
+          </motion.div>
+        ))}
+      </div>
     </div>
   </SectionWrapper>
 );
