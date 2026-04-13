@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Mail, Phone, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Send, ExternalLink } from "lucide-react";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -13,7 +13,7 @@ const ContactSection = () => {
   };
 
   return (
-    <SectionWrapper id="contact" title="Contact">
+    <SectionWrapper id="contact" title="Get in Touch" subtitle="Let's connect and create something great" variant="warm">
       <div className="grid md:grid-cols-2 gap-8">
         {/* Info cards */}
         <motion.div
@@ -22,8 +22,8 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="space-y-4"
         >
-          <p className="text-muted-foreground mb-6 leading-relaxed">
-            "Feel free to reach out for job opportunities, collaborations, or professional networking."
+          <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+            Feel free to reach out for job opportunities, collaborations, or professional networking.
           </p>
 
           <ContactCard
@@ -63,7 +63,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
           onSubmit={handleSubmit}
-          className="bg-card rounded-xl p-6 md:p-8 shadow-card space-y-5"
+          className="bg-card rounded-2xl p-6 md:p-8 shadow-card border border-border/50 space-y-5"
         >
           <h3 className="font-heading font-bold text-foreground text-lg">Send a Message</h3>
           <input
@@ -73,7 +73,7 @@ const ContactSection = () => {
             maxLength={100}
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/50 transition-all"
           />
           <input
             type="email"
@@ -82,7 +82,7 @@ const ContactSection = () => {
             maxLength={255}
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/50 transition-all"
           />
           <textarea
             placeholder="Your Message"
@@ -91,11 +91,11 @@ const ContactSection = () => {
             rows={4}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold/50 resize-none transition-all"
           />
           <button
             type="submit"
-            className="gradient-btn text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
+            className="w-full gradient-btn text-navy-deep px-6 py-3.5 rounded-xl font-bold text-sm hover:shadow-glow transition-all flex items-center justify-center gap-2"
           >
             <Send size={16} />
             Send Message
@@ -126,19 +126,20 @@ function ContactCard({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className={`flex items-center gap-4 bg-card rounded-xl p-4 shadow-card hover:shadow-card-hover transition-shadow group ${
-        highlight ? "border border-primary/20" : ""
+      className={`flex items-center gap-4 bg-card rounded-2xl p-4 shadow-card border hover:shadow-card-hover hover:-translate-y-0.5 transition-all group ${
+        highlight ? "border-gold/20" : "border-border/50"
       }`}
     >
-      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-        highlight ? "gradient-btn text-primary-foreground" : "bg-secondary text-primary"
+      <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+        highlight ? "gradient-btn text-navy-deep" : "bg-navy-deep/5 text-navy-deep"
       }`}>
         <Icon size={18} />
       </div>
-      <div>
+      <div className="flex-1">
         <p className="text-xs text-muted-foreground">{label}</p>
-        <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{value}</p>
+        <p className="text-sm font-medium text-foreground group-hover:text-gold-dark transition-colors">{value}</p>
       </div>
+      {external && <ExternalLink size={14} className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />}
     </a>
   );
 }

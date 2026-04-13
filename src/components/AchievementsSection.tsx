@@ -1,35 +1,37 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Trophy, BookOpen, Users, Heart, Award } from "lucide-react";
+import { Trophy, BookOpen, Users, Heart, Award, Star } from "lucide-react";
 
 const achievements = [
-  "Secured 1st Rank in MCA Program",
-  "Secured 3rd Rank in BCA Program",
-  "2nd Prize in Funspark Competition (2025)",
-  "2nd Prize in Pitch Perfect & Fanton Quiz (2025)",
+  { text: "Secured 1st Rank in MCA Program", icon: Star },
+  { text: "Secured 3rd Rank in BCA Program", icon: Trophy },
+  { text: "2nd Prize in Funspark Competition (2025)", icon: Award },
+  { text: "2nd Prize in Pitch Perfect & Fanton Quiz (2025)", icon: Award },
 ];
 
 const AchievementsSection = () => (
-  <SectionWrapper id="achievements" title="Achievements & Activities" alt>
+  <SectionWrapper id="achievements" title="Achievements & Activities" subtitle="Honors, leadership, and community involvement" variant="dark">
     {/* Honors */}
     <div className="grid sm:grid-cols-2 gap-4 mb-12">
       {achievements.map((a, i) => (
         <motion.div
-          key={a}
+          key={a.text}
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.08 }}
-          className="bg-card rounded-xl p-5 shadow-card flex items-center gap-4 hover:shadow-card-hover transition-shadow"
+          className="glass-card rounded-2xl p-5 flex items-center gap-4 hover:bg-white/[0.08] transition-all group"
         >
-          <Trophy size={18} className="text-primary flex-shrink-0" />
-          <span className="text-sm font-medium text-foreground">{a}</span>
+          <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+            <a.icon size={18} />
+          </div>
+          <span className="text-sm font-medium text-white/90">{a.text}</span>
         </motion.div>
       ))}
     </div>
 
     {/* Leadership, Research, Certifications, Volunteering */}
-    <div className="grid sm:grid-cols-2 gap-6">
+    <div className="grid sm:grid-cols-2 gap-5">
       <InfoCard icon={Users} title="Leadership">
         <li>Class Representative (2021 – 2024)</li>
         <li>Event Coordinator – FUTEX 2025 (800+ registrations, AI Quest, Treasure Trove)</li>
@@ -58,13 +60,22 @@ function InfoCard({ icon: Icon, title, children }: { icon: typeof Users; title: 
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-card rounded-xl p-6 shadow-card"
+      className="glass-card rounded-2xl p-6 hover:bg-white/[0.08] transition-all"
     >
-      <div className="flex items-center gap-2 mb-3">
-        <Icon size={18} className="text-primary" />
-        <h3 className="font-heading font-bold text-foreground">{title}</h3>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
+          <Icon size={16} />
+        </div>
+        <h3 className="font-heading font-bold text-white">{title}</h3>
       </div>
-      <ul className="space-y-1.5 ml-4 text-sm text-muted-foreground list-disc">{children}</ul>
+      <ul className="space-y-2 ml-1 text-sm text-white/60 list-none">
+        {React.Children.map(children, (child) => (
+          <div className="flex items-start gap-2">
+            <span className="w-1 h-1 rounded-full bg-gold mt-2 flex-shrink-0" />
+            {child}
+          </div>
+        ))}
+      </ul>
     </motion.div>
   );
 }
