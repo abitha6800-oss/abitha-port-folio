@@ -68,7 +68,7 @@ const HeroSection = () => (
             <span className="text-sm text-white/50">Trichy, India</span>
           </div>
           <p className="text-white/60 mt-5 max-w-lg text-base leading-relaxed">
-            Building scalable, secure, and intelligent applications with real-world impact.
+            Full Stack Developer passionate about building scalable, secure, and intelligent applications that solve real-world problems.
           </p>
           <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
             <a

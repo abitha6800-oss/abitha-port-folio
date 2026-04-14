@@ -7,8 +7,8 @@ const projects = [
   { title: "Learning Management System", desc: "Platform for managing courses and students with video learning, quizzes, and certificate generation.", tech: ["React", "Django"], ongoing: true, color: "from-purple-500 to-purple-600" },
   { title: "Secure Multimedia Content Sharing", desc: "Secure system using hybrid ECC-AES encryption with real-time access control.", tech: ["Python", "Cryptography"], color: "from-emerald-500 to-emerald-600" },
   { title: "Transformer & Transmission Line Fault Detection", desc: "IoT-based fault detection with real-time monitoring and alert system.", tech: ["Arduino", "Sensors"], color: "from-amber-500 to-amber-600" },
-  { title: "Event Management System", desc: "Web-based event platform with registration, scheduling, and ticketing.", tech: ["HTML", "CSS", "JS", "Node.js", "PHP", "SQL"], color: "from-rose-500 to-rose-600" },
-  { title: "AI Fake News Detection", desc: "Machine learning-based classification system for fake news.", tech: ["Python"], color: "from-cyan-500 to-cyan-600" },
+  { title: "Event Management System", desc: "Web-based event platform with registration, scheduling, and ticketing.", tech: ["HTML", "CSS", "JavaScript", "Bootstrap 4", "Node.js", "PHP", "SQL"], color: "from-rose-500 to-rose-600" },
+  { title: "AI Fake News Detection", desc: "AI-based classification system for detecting fake news using artificial intelligence.", tech: ["AI", "Python"], color: "from-cyan-500 to-cyan-600" },
 ];
 
 const ProjectsSection = () => (
