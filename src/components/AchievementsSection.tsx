@@ -38,7 +38,7 @@ const AchievementsSection = () => (
       ]} />
       <InfoCard icon={BookOpen} title="Research & Workshop" items={[
         "Published: AI and its Impact on Business and Management (2025)",
-        "IBM AI Workshop (College)",
+        "IBM AI Workshop – AI in Agriculture (Rabiammal Ahamed Maideen College For Women, Tiruvarur)",
       ]} />
       <InfoCard icon={Award} title="Certifications" items={[
         "Web Design",
