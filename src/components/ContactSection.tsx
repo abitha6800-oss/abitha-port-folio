@@ -131,7 +131,7 @@ function ContactCard({
       }`}
     >
       <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
-        highlight ? "gradient-btn text-navy-deep" : "bg-navy-deep/5 text-navy-deep"
+        highlight ? "gradient-btn text-navy-deep" : "bg-gold/10 text-gold"
       }`}>
         <Icon size={18} />
       </div>
