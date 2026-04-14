@@ -3,7 +3,7 @@ import SectionWrapper from "./SectionWrapper";
 import { GraduationCap } from "lucide-react";
 
 const education = [
-  { degree: "MCA", school: "M.A.M Business School, Anna University", location: "Trichy, India", year: "2024 – 2026", score: "CGPA: 8.58" },
+  { degree: "MCA", school: "M.A.M Business School, Anna University", location: "Trichy, India", year: "2024 – 2026", score: "CGPA: 8.74 (3rd Sem)" },
   { degree: "BCA", school: "Bishop Heber College, Bharathidasan University", location: "Trichy, India", year: "2021 – 2024", score: "CGPA: 8.18" },
   { degree: "Higher Secondary", school: "Montfort Matric Hr Sec School", location: "Ariyalur", year: "2019 – 2021", score: "79%" },
 ];
